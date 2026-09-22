@@ -1,22 +1,10 @@
-#include <SFML/Graphics.hpp>
+#include <raylib.h>
 #include <iostream>
-#include <vector>
-#include <string>
-#include "Card.hpp"
-#include "Hand.hpp"
-#include "Deck.hpp"
-#include "Table.hpp"
 #include "PlayState.hpp"
 #include "Debug.hpp"
-#include "AI.hpp"
-#include "Consumable.hpp"
-#include "Inventory.hpp"
-#include <memory>
 #include "GFX.hpp"
-#include "Button.hpp"
 #include "UI.hpp"
 using namespace std;
-using namespace sf;
 
 #ifdef DEBUG
 bool debugMode = true;
@@ -28,15 +16,21 @@ bool cheats = false;
 
 int main()
 {
-	std::cout << "Deckerz GUI v0\n";
+	// SFML is being deprecated.
 
-	// SFML graphics objects
-	RenderWindow window(VideoMode({windowWidth, windowHeight}), "Deckerz GUI alpha 0");
+	std::cout << "Deckerz GUI v0.1\n";
+	std::cout << "! - This version is mid transition from SFML->raylib\n";
 
-	sf::Texture bgTexture("res/bg.png");
+	// old SFML graphics objects
+	/*sf::Texture bgTexture("res/bg.png");
 	sf::Sprite bpsprite(bgTexture);
 
-	sf::Vector2f mousePos;
+	sf::Vector2f mousePos;*/
+
+	// raylib graphics objects
+	InitWindow(windowWidth, windowHeight, "Deckerz - DEBUG raylib prototype");
+
+	SetTargetFPS(60);
 
 	// My graphics objects
 	UI ui;
@@ -50,39 +44,42 @@ int main()
 	ps.resetBonuses();
 
 	// Start of SFML window loop
-	while (window.isOpen())
+	while (!WindowShouldClose())
 	{
 		// Initialize stuff
-		auto mousePos = window.mapPixelToCoords(Mouse::getPosition(window));
-		ui.resetInteracts();
-		ui.setMouse(mousePos);
+		// auto mousePos = window.mapPixelToCoords(Mouse::getPosition(window));
+		// ui.resetInteracts();
+		// ui.setMouse(mousePos);
 
 		// SFML events
-		while (const optional event = window.pollEvent()) ui.inputHandler(window, event);
+		// while (const optional event = window.pollEvent()) ui.inputHandler(window, event);
 		
 		// If it's the AI's turn, the AI plays
-		if (ps.getTurn() == Turn::AI) ps.aiTurn();
+		//if (ps.getTurn() == Turn::AI) ps.aiTurn();
 		// Else, the player gets to play
-		else ps.PIHandler(ui.getInteracts());
-
-		// Clear window and draw background
-		window.clear();
-		window.draw(bpsprite);
+		//else ps.PlayerIntHandler(ui.getInteracts());
 
 		// Layout everything
-		if (ui.getInteracts().playerInteraction == PI::Play) ui.resetMCs();
-		Snapshot snapshot = ps.snapshot();
-		ui.layoutHandler(window, snapshot);
+		//if (ui.getInteracts().playerInteraction == PI::Play) ui.resetMCs();
+		//Snapshot snapshot = ps.snapshot();
+		//ui.layoutHandler(window, snapshot);
 
 		// Check collision
-		ui.collisionHandler();
+		//ui.collisionHandler();
 
 		// Draw everything
-		ui.drawHandler(window);
+		BeginDrawing();
+		{
+			// Clear window and draw background
+			ClearBackground(RAYWHITE);
+			DrawText("imagine there was like a card game here or something", 190, 200, 20, BLACK);
 
-		// Display
-		window.display();
+			//ui.drawhandler()
+		}
+		EndDrawing();
 	}
+
+	CloseWindow();
 
 	return 0;
 }

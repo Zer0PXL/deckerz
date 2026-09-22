@@ -14,7 +14,7 @@ enum MAGIC
 	SPEAR, // Turns a card into a Draw 2 card
 	SHIELD, // Turns a card into a Skip card
 	PEEKABOO, // See the top 3 cards in your deck
-	BLANK, // Use last used MAGIC card
+	BLANKCARD, // Use last used MAGIC card
 	LOSTCRAYON, // Turn one card into another
 	RIP, // Rip a card
 	WILDACE, // Playable at any time to change suit

@@ -460,9 +460,9 @@ bool PlayState::playMCs(std::unordered_map<int, MiddleCard> mCs)
 	return true;
 }
 
-bool PlayState::PIHandler(Interactions interacts)
+bool PlayState::PlayerIntHandler(Interactions interacts)
 {
-	if (interacts.playerInteraction == PI::Draw)
+	if (interacts.playerInteraction == PlayerInt::Draw)
 	{
 		Debug::log("[PlayState.cpp] Draw interaction received.");
 		playerDraw();
@@ -470,14 +470,14 @@ bool PlayState::PIHandler(Interactions interacts)
 		return true;
 	}
 	
-	else if (interacts.playerInteraction == PI::Play)
+	else if (interacts.playerInteraction == PlayerInt::Play)
 	{
 		Debug::log("[PlayState.cpp] Play interaction received.");
 		turn = Turn::AI;
 		return playMCs(interacts.playedCards);
 	}
 
-	else if (interacts.playerInteraction == PI::None) return true; // Bypass if no interaction
+	else if (interacts.playerInteraction == PlayerInt::None) return true; // Bypass if no interaction
 
 	else
 	{

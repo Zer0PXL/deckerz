@@ -2,9 +2,9 @@
 #include <string>
 using namespace std;
 
-Button::Button(string name, sf::Texture& texture, GameState state, bool hovered, bool pressed, bool clicked) : name(name), sprite(texture), hovered(hovered), pressed(pressed), clicked(clicked) {}
+//Button::Button(string name, sf::Texture& texture, GameState state, bool hovered, bool pressed, bool clicked) : name(name), sprite(texture), hovered(hovered), pressed(pressed), clicked(clicked) {}
 
-sf::Sprite& Button::getSprite()
+/*sf::Sprite& Button::getSprite()
 {
     return sprite;
 }
@@ -12,4 +12,4 @@ sf::Sprite& Button::getSprite()
 string Button::getName()
 {
     return name;
-}
+}*/

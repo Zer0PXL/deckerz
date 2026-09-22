@@ -75,7 +75,7 @@ public:
 	bool playMCs(std::unordered_map<int, MiddleCard> mCs);
 	// This function serves as a way for PlayState and UI to communicate with each other indirectly
 	// It returns bools to tell you if the Interactions are legal or not
-	bool PIHandler(Interactions interacts);
+	bool PlayerIntHandler(Interactions interacts);
 
 	void aiPlay(const std::vector<std::shared_ptr<Card>> cards);
 	void aiTurn();

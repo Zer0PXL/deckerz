@@ -2,21 +2,20 @@
 #include <iostream>
 #include "Debug.hpp"
 #include <string>
-#include <SFML/Graphics.hpp>
 #include <memory>
 
-sf::Font font("res/ARIAL.TTF");
+/*sf::Font font("res/ARIAL.TTF");
 
 sf::RectangleShape sprite;
 sf::Text cardRank(font);
 sf::Text cardSuit(font);
 sf::Text debugText(font); std::string debugString;
-
+*/
 unsigned int windowWidth = 1280;
 unsigned int windowHeight = 720;
-
+/*
 // This function places the MiddleCard, creating an object accessible by both the program and the player.
-MiddleCard GFX::layoutCard(std::shared_ptr<Card> card, sf::Vector2f position, CardState state)
+//MiddleCard GFX::layoutCard(std::shared_ptr<Card> card, sf::Vector2f position, CardState state)
 {
     sprite.setSize({150, 200});
     sprite.setOrigin({75, 100});
@@ -25,19 +24,19 @@ MiddleCard GFX::layoutCard(std::shared_ptr<Card> card, sf::Vector2f position, Ca
     // replace this later with extracting the correct texture from the spritesheet
     sprite.setFillColor(sf::Color::White);
 
-    MiddleCard mC(card, sprite, state);
+    //MiddleCard mC(card, sprite, state);
     return mC;
 }
 
 // Just takes the MiddleCard and draws it to the screen
-void GFX::drawCard(MiddleCard mC, sf::RenderWindow& window)
+//void GFX::drawCard(MiddleCard mC, sf::RenderWindow& window)
 {
     float OffsetY = 0;
 
     cardRank.setString(std::to_string(mC.logicCard->getRank()));
     cardRank.setCharacterSize(24);
     cardRank.setFillColor(sf::Color::Black);
-    cardRank.setPosition({mC.sprite.getPosition().x - 60, mC.sprite.getPosition().y - 12});
+    //cardRank.setPosition({mC.sprite.getPosition().x - 60, mC.sprite.getPosition().y - 12});
 
     if (mC.logicCard->getSuit() == HEARTS)
         cardSuit.setString("of Hearts");
@@ -49,7 +48,7 @@ void GFX::drawCard(MiddleCard mC, sf::RenderWindow& window)
         cardSuit.setString("of Clubs");
     cardSuit.setFillColor(sf::Color::Black);
     cardSuit.setCharacterSize(24);
-    cardSuit.setPosition({mC.sprite.getPosition().x + 25 - 60, mC.sprite.getPosition().y - 12});
+    //cardSuit.setPosition({mC.sprite.getPosition().x + 25 - 60, mC.sprite.getPosition().y - 12});
 
     if (debugMode)
     {
@@ -65,19 +64,19 @@ void GFX::drawCard(MiddleCard mC, sf::RenderWindow& window)
         debugText.setFillColor(sf::Color::Red);
         debugText.setOutlineThickness(5.f);
         debugText.setOutlineColor(sf::Color::Black);
-        debugText.setPosition({mC.sprite.getPosition().x - 60.f, mC.sprite.getPosition().y - 100.f});
+        //debugText.setPosition({mC.sprite.getPosition().x - 60.f, mC.sprite.getPosition().y - 100.f});
         debugText.setString(debugString);
     }
 
     if (mC.state.selected) OffsetY = 35;
     else if (mC.state.hovered) OffsetY = 15;
 
-    mC.sprite.setPosition({mC.sprite.getPosition().x, mC.sprite.getPosition().y - OffsetY});
+    //mC.sprite.setPosition({mC.sprite.getPosition().x, mC.sprite.getPosition().y - OffsetY});
     cardRank.setPosition({cardRank.getPosition().x, cardRank.getPosition().y - OffsetY});
     cardSuit.setPosition({cardSuit.getPosition().x, cardSuit.getPosition().y - OffsetY});
     debugText.setPosition({debugText.getPosition().x, debugText.getPosition().y});
 
-    window.draw(mC.sprite);
+    //window.draw(mC.sprite);
     window.draw(cardRank);
     window.draw(cardSuit);
     if (debugMode) window.draw(debugText);
@@ -94,4 +93,4 @@ std::vector<float> GFX::calculateHandPos(std::vector<std::shared_ptr<Card>> hand
     }
 
     return pos;
-}
+}*/

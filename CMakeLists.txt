@@ -9,7 +9,9 @@ file(GLOB_RECURSE SOURCES
 add_executable(Deckerz ${SOURCES})
 target_compile_definitions(Deckerz PRIVATE $<$<CONFIG:Debug>:DEBUG>)
 
-target_link_libraries(Deckerz PRIVATE sfml-system sfml-window sfml-graphics sfml-network sfml-audio)
+# SFML is deprecated
+# target_link_libraries(Deckerz PRIVATE sfml-system sfml-window sfml-graphics sfml-network sfml-audio)
+target_link_libraries(Deckerz PRIVATE raylib)
 target_include_directories(Deckerz PRIVATE src)
 
 add_custom_command(

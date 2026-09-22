@@ -1,9 +1,7 @@
 #pragma once
-#include <SFML/Graphics.hpp>
 #include <vector>
 #include <memory>
 #include "Card.hpp"
-#include "Button.hpp"
 
 extern unsigned int windowWidth;
 extern unsigned int windowHeight;
@@ -23,10 +21,10 @@ struct CardState
 struct MiddleCard
 {
     std::shared_ptr<Card> logicCard;
-    sf::RectangleShape sprite; // Temporary
+    // RectangleShape sprite; // Temporary
     CardState state;
 
-    MiddleCard(std::shared_ptr<Card> c, sf::RectangleShape s, CardState st) : logicCard(c), sprite(s), state(st) {};
+    // MiddleCard(std::shared_ptr<Card> c, sf::RectangleShape s, CardState st) : logicCard(c), sprite(s), state(st) {};
 };
 
 class GFX
@@ -34,7 +32,7 @@ class GFX
 private:
 
 public:
-    static MiddleCard layoutCard(std::shared_ptr<Card> card, sf::Vector2f position, CardState state);
-    static void drawCard(MiddleCard middleCard, sf::RenderWindow& window);
+    static MiddleCard layoutCard(std::shared_ptr<Card> card, int position, CardState state); // position temporarily made an integer
+    // static void drawCard(MiddleCard middleCard, sf::RenderWindow& window);
     static std::vector<float> calculateHandPos(std::vector<std::shared_ptr<Card>> hand);
 };

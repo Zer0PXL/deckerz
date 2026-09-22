@@ -1,9 +1,11 @@
 #pragma once
 #include "GFX.hpp"
-#include <SFML/Graphics.hpp>
+#include <optional>
+#include <memory>
+#include <unordered_map>
 
 // PlayerInteraction
-enum class PI
+enum class PlayerInt
 {
     None,
     Play,
@@ -13,7 +15,7 @@ enum class PI
 // Dumb name, but it's the logic that goes to PlayState
 struct Interactions
 {
-    PI playerInteraction = PI::None;
+    PlayerInt playerInteraction = PlayerInt::None;
     std::unordered_map<int, MiddleCard> playedCards;
 };
 
@@ -29,7 +31,7 @@ class UI
 {
 private:
     // Interactions
-    sf::Vector2f mousePos;
+    // sf::Vector2f mousePos;
     Interactions interacts;
 
     // MiddleCards
@@ -37,15 +39,15 @@ private:
 	std::unordered_map<int, MiddleCard> selectedCards; // Uses UCID as a key
 
     // Buttons
-	std::vector<Button> buttons;
+	// std::vector<Button> buttons;
 public:
-    void setMouse(sf::Vector2f mPos);
+    void setMouse(int mPos);
     void resetInteracts();
     Interactions getInteracts();
     void resetMCs();
 
-    Interactions inputHandler(sf::RenderWindow& window, std::optional<sf::Event> event);
-    void layoutHandler(sf::RenderWindow& window, Snapshot snapshot);
+    Interactions inputHandler(int& window, std::optional<std::shared_ptr<int>> event);
+    void layoutHandler(int& window, Snapshot snapshot);
     void collisionHandler();
-    void drawHandler(sf::RenderWindow& window);
+    void drawHandler(int& window);
 };
